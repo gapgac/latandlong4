@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latandlonver4</title>
+</head>
+<body>
+    <div id="aLat"></div>
+    <script>
+        function success({ coords, timestamp }) {
+            const latitude = coords.latitude;
+            const longitude = coords.longitude;
+            document.getElementById('aLat').innerHTML = coords.latitude + " N, " 
+            + coords.longitude + " E"
+        }
+        function getUserLocation() {
+            if (!navigator.geolocation) {
+                throw "위치 정보가 지원되지 않습니다.";
+            }
+            navigator.geolocation.watchPosition(success);
+        }
+        getUserLocation();
+    </script>
+</body>
+</html>
